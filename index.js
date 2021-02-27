@@ -244,6 +244,15 @@ const managerCard = () => {
     </div>`
 }
 
+const managerCardContainer = () => {
+    let cardContainer = '';
+    managers.forEach(manager => {
+        cardContainer += managerCard(manager);
+    });
+
+    return cardContainer;
+}
+
 whatPosition();
 
 
