@@ -256,7 +256,7 @@ const managerCardContainer = () => {
 
 const createFile = () => {
     fs.writeFile('./team.html', createPage(), (err) => {
-        err ? console.log(err, 'did not work')
+        err ? console.log(err, 'error')
     });
 }
 
