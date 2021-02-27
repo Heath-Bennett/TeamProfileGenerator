@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const fs = require('fs');
 const Manager = require("./lib/Manager");
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -159,7 +160,7 @@ const whatPosition = () => {
                     internInfo();
                     break;
                 case 'done':
-                    createPage();
+                    createFile();
             }
         })
         .catch(error => {
@@ -251,6 +252,12 @@ const managerCardContainer = () => {
     });
 
     return cardContainer;
+}
+
+const createFile = () => {
+    fs.writeFile('./team.html', createPage(), (err) => {
+        err ? console.log(err, 'did not work')
+    });
 }
 
 whatPosition();
