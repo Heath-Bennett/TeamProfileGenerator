@@ -159,7 +159,7 @@ const whatPosition = () => {
                 case 'Intern':
                     internInfo();
                     break;
-                case 'done':
+                case 'Done':
                     createFile();
             }
         })
@@ -176,51 +176,49 @@ const whatPosition = () => {
 
 const createPage = () =>
 `
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-us">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     </head>
 
     <body>
         <header>
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-12">
+                    <div class="col-12 text-center">
                         <h1>My Team</h1>
                     </div>
                 </div>
                 <div class="row align-items-start">
-                    <div class="col-12> 
+                    <div class='col-12'> 
                         <h2>Managers:</h2>
                     </div>
                 </div>
                 <div class="row align-items-center">
-                    <div class="col-12> 
+                    
                         ${managerCardContainer()}
-                    </div>
+                    
                 </div>
                 <div class="row align-items-start">
-                    <div class="col-12> 
+                    <div class="col-12"> 
                         <h2>Engineers:</h2>
                     </div>
                 </div>
                 <div class="row align-items-center">
-                    <div class="col-12> 
-                        ${engineerCardContainer()}
-                    </div>
+                    ${engineerCardContainer()}
                 </div>
                 <div class="row align-items-start">
-                    <div class="col-12> 
+                    <div class="col-12"> 
                         <h2>Interns:</h2>
                     </div>
                 </div>
                 <div class="row align-items-center">
-                    <div class="col-12> 
-                        ${internCardContainer()}
+                    <div class="col-12"> 
+                        
                     </div>
                 </div>
             </div>
@@ -231,32 +229,63 @@ const createPage = () =>
 `;
 
 
-const managerCard = () => {
-    return `<div class="card">
-    <div class="card-header">
-        <h3>${manager.name}</h3>
-        <h4>Manager</h4>
-    </div>
-    <div class="card-body">
-        <p class="card-text">ID: ${manager.id}</p>
-        <p class="card-text">Email: ${manager.emailAdd}</p>
-        <p class="card-text">Office Number: ${manager.officeNumber}</p>
-    </div>
-    </div>`
+const managerCard = (element) => {
+    return `            
+                    <div class="col-2 offset-1">     
+                        <div class="card" style="width: 14rem;">
+                        <div class="card-header">
+                            <h3>${element.name}</h3>
+                            <h4>Manager</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">ID: ${element.id}</p>
+                            <p class="card-text">Email: ${element.email}</p>
+                            <p class="card-text">Office Number: ${element.officeNumber}</p>
+                        </div>
+                        </div>
+                    </div>    
+    `
 }
 
 const managerCardContainer = () => {
     let cardContainer = '';
-    managers.forEach(manager => {
-        cardContainer += managerCard(manager);
+    managerArray.forEach((element) => {
+        cardContainer += managerCard(element);
     });
 
     return cardContainer;
 }
 
+const engineerCard = (element) => {
+    return `            
+                    <div class="col-2 offset-1">     
+                        <div class="card" style="width: 14rem;">
+                        <div class="card-header">
+                            <h3>${element.name}</h3>
+                            <h4>Engineer</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">ID: ${element.id}</p>
+                            <p class="card-text">Email: ${element.email}</p>
+                            <p class="card-text">GitHub: ${element.github}</p>
+                        </div>
+                        </div>
+                    </div>    
+    `
+}
+
+const engineerCardContainer = () => {
+    let cardContainer = '';
+    engineerArray.forEach((element) => {
+        cardContainer += engineerCard(element);
+    });
+    
+    return cardContainer;
+}
+
 const createFile = () => {
     fs.writeFile('./team.html', createPage(), (err) => {
-        err ? console.log(err, 'error')
+        err ? console.log(err, 'error') : console.log('*****************SUCCESS! Page created****************')
     });
 }
 
