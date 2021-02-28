@@ -183,46 +183,30 @@ const createPage = () =>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/00f36c2501.js" crossorigin="anonymous"></script>
+        <link rel='stylesheet' href='./style.css'>
     </head>
 
     <body>
         <header>
             <div class="container">
-                <div class="row align-items-center">
+                <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <h1>My Team</h1>
                     </div>
                 </div>
-                <div class="row align-items-start">
-                    <div class='col-12'> 
-                        <h2>Managers:</h2>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    
-                        ${managerCardContainer()}
-                    
-                </div>
-                <div class="row align-items-start">
-                    <div class="col-12"> 
-                        <h2>Engineers:</h2>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    ${engineerCardContainer()}
-                </div>
-                <div class="row align-items-start">
-                    <div class="col-12"> 
-                        <h2>Interns:</h2>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-12"> 
-                        
-                    </div>
-                </div>
             </div>
         </header>
+        
+        <main>
+            <div class="container space">
+                <div class="row justify-content-start">
+                    ${managerCardContainer()}
+                    ${engineerCardContainer()}
+                    ${internCardContainer()}
+            </div>
+        </main>
+            
     </body>
 
 </html>
@@ -231,15 +215,15 @@ const createPage = () =>
 
 const managerCard = (element) => {
     return `            
-                    <div class="col-2 offset-1">     
-                        <div class="card" style="width: 14rem;">
-                        <div class="card-header">
+                    <div class="col-4">     
+                        <div class="card padd" style="width: 18rem;">
+                        <div class="card-header orange">
                             <h3>${element.name}</h3>
-                            <h4>Manager</h4>
+                            <h4><i class="fas fa-mug-hot"></i> Manager</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body yellowred">
                             <p class="card-text">ID: ${element.id}</p>
-                            <p class="card-text">Email: ${element.email}</p>
+                            <p>Email: <a href="mailto:${element.email}">${element.email}</a></p>
                             <p class="card-text">Office Number: ${element.officeNumber}</p>
                         </div>
                         </div>
@@ -258,16 +242,16 @@ const managerCardContainer = () => {
 
 const engineerCard = (element) => {
     return `            
-                    <div class="col-2 offset-1">     
-                        <div class="card" style="width: 14rem;">
-                        <div class="card-header">
+                    <div class="col-4">     
+                        <div class="card padd" style="width: 18rem;">
+                        <div class="card-header orange">
                             <h3>${element.name}</h3>
-                            <h4>Engineer</h4>
+                            <h4><i class="fas fa-glasses"></i> Engineer</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body yellowred">
                             <p class="card-text">ID: ${element.id}</p>
-                            <p class="card-text">Email: ${element.email}</p>
-                            <p class="card-text">GitHub: ${element.github}</p>
+                            <p>Email: <a href="mailto:${element.email}">${element.email}</a></p>
+                            <p>GitHub: <a href="https://github.com/${element.github}" target="_blank">${element.github}</a></p>
                         </div>
                         </div>
                     </div>    
@@ -282,6 +266,34 @@ const engineerCardContainer = () => {
     
     return cardContainer;
 }
+
+const internCard = (element) => {
+    return `            
+                    <div class="col-4">     
+                        <div class="card padd" style="width: 18rem;">
+                        <div class="card-header orange">
+                            <h3>${element.name}</h3>
+                            <h4><i class="fas fa-graduation-cap"></i> Intern</h4>
+                        </div>
+                        <div class="card-body yellowred">
+                            <p class="card-text">ID: ${element.id}</p>
+                            <p>Email: <a href="mailto:${element.email}">${element.email}</a></p>
+                            <p class="card-text">School: ${element.school}</p>
+                        </div>
+                        </div>
+                    </div>    
+    `
+}
+
+const internCardContainer = () => {
+    let cardContainer = '';
+    internArray.forEach((element) => {
+        cardContainer += internCard(element);
+    });
+    
+    return cardContainer;
+}
+
 
 const createFile = () => {
     fs.writeFile('./team.html', createPage(), (err) => {
