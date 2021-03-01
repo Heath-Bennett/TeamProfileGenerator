@@ -39,6 +39,7 @@ This program runs from the command line. It prompts the user for the name, posit
 
 * [Bootstrap](https://getbootstrap.com/)
 * [Coolors](https://coolors.co/)
+* [Font Awesome](https://fontawesome.com/)
 * [fs](https://www.npmjs.com/package/fs)
 * [Inquirer](https://www.npmjs.com/package/inquirer)
 * [Node js](https://nodejs.org/en/)
