@@ -10,6 +10,8 @@ This program runs from the command line. It prompts the user for the name, posit
 
 [Link to GitHub Repository](https://github.com/Heath-Bennett/TeamProfileGenerator)
 
+[Link to Video of Demo](https://heath-bennett.github.io/TeamProfileGenerator/)
+
 &nbsp;
 
 ## Table of Contents 
@@ -42,6 +44,7 @@ This program runs from the command line. It prompts the user for the name, posit
 * [Font Awesome](https://fontawesome.com/)
 * [fs](https://www.npmjs.com/package/fs)
 * [Inquirer](https://www.npmjs.com/package/inquirer)
+* [Jest](https://www.npmjs.com/package/jest)
 * [Node js](https://nodejs.org/en/)
 
 [Table of Contents](#Table-of-Contents)
